@@ -1,17 +1,25 @@
-import React from 'react';
-import { ConfigProvider, Popconfirm, Table, Form, Button, Switch, InputNumber, DatePicker, TimePicker, Select, Cascader, TreeSelect } from 'antd';
-import 'antd/dist/antd.css';
+import React, { useState } from 'react';
+import { ConfigProvider, Modal, Radio, Space, Spin, Popconfirm, Table, Form, Button, Switch, InputNumber, DatePicker, TimePicker, Select, Cascader, TreeSelect } from 'antd';
 import './index.less'
 import zhCN from 'antd/lib/locale/zh_CN';
 import Input from 'antd/lib/input/Input';
 import { tableProps } from './interface/tableProps';
+import IconButton from './components/IconButton';
+import {
+    FontSizeOutlined,
+    FullscreenExitOutlined,
+    FullscreenOutlined,
+    PlusOutlined,
+    SettingOutlined,
+    VerticalAlignBottomOutlined,
+} from '@ant-design/icons';
 
 /**
  * 根据columns内的dataType获取类型
  * @param data 
  * @returns 
  */
- const formTypeItem = (data: any) => {
+const formTypeItem = (data: any) => {
     switch (data.dataType) {
         case 'input':
             return <Input style={{ width: data.width || 180 }} placeholder={`请输入${data.title}`} />;
@@ -71,25 +79,25 @@ const getFormItem = (itemInfo: any) => {
  */
 const getColumns = (props: any) => {
     let baseColumns = [...props.columns];
-    if (props.onDelete || props.onUpdate) {
+    if (props.onDelete || props.onUpdate || props.onPreview) {
         baseColumns.push({
             title: '操作',
             align: 'center',
             key: 'edit',
             readOnly: true,
             fixed: 'right',
-            width: 180,
+            width: 200,
             render: (row: any) => {
                 return (
                     <div className='table-operation-btn'>
-                        {props.onUpdate && <Button
-                            type='link'
+                        {props.onUpdate && <div
+                            className='operate-btn-item-update'
                             onClick={() => {
                                 props.onUpdate(row)
                             }}
                         >
                             编辑
-                        </Button>}
+                        </div>}
                         {props.onDelete && <Popconfirm
                             title='确认删除这条数据吗?'
                             onConfirm={() => {
@@ -99,10 +107,18 @@ const getColumns = (props: any) => {
                             okText='确认'
                             cancelText='取消'
                         >
-                            <Button type='link' danger>
+                            <div className='operate-btn-item-delete'>
                                 删除
-                            </Button>
+                            </div>
                         </Popconfirm>}
+                        {props.onPreview && <div
+                            className='operate-btn-item-preview'
+                            onClick={() => {
+                                props.onPreview(row)
+                            }}
+                        >
+                            详情
+                        </div>}
                     </div>
                 );
             }
@@ -118,53 +134,110 @@ const getColumns = (props: any) => {
  */
 const SuperTable = (props: tableProps) => {
     const [SearchForm]: any = Form.useForm();
-    const pagination = { //分页回调
+    const [showModal, setShowModal] = useState(false);
+    const [size, setSize] = useState<any>('default');
+
+    //分页回调
+    const pagination = {
         showSizeChanger: true,
         onChange: (page: any, pageSize: any) => {
             props.onPageChange && props.onPageChange(page, pageSize)
         }
     }
-    return <>
-        <ConfigProvider locale={zhCN}>
-            {/* 表单提交 */}
-            {!props.purTable && <div className='form-search'>
-                <Form
-                    form={SearchForm}
-                    onFinish={e => {
-                        props.onSearchBarFinish && props.onSearchBarFinish(e);
-                    }}
-                >
-                    <div className='form-item-list'>
-                        {getFormItem(props.columns)}
-                        <div className='submit-btn'>
-                            <Button style={{ backgroundColor: '#524bff' }} type='primary' htmlType='submit'>
-                                查询
-                            </Button>
-                            <Button
-                                onClick={() => {
-                                    SearchForm.resetFields();
-                                }}
-                            >
-                                重置
-                            </Button>
-                        </div>
-                    </div>
 
-                </Form>
-            </div>}
-            {/* 表格信息 */}
-            <div className='active-info'>
-                {props.onAdd && <Button style={{ backgroundColor: '#524bff' }} type='primary' onClick={props.onAdd}>
-                    新增数据
-                </Button>}
-            </div>
-            <Table
-                bordered={props.bordered}
-                columns={getColumns(props)}
-                dataSource={props.dataSource.map((item, index) => { return { ...item, key: index } })}
-                pagination={pagination}
-            />
+    // 表格主体
+    const content = () => {
+        return <ConfigProvider locale={zhCN}>
+            <Spin spinning={props.loading || false} tip="加载中...">
+                {/* 表单提交 */}
+                {!props.purTable && <div className='form-search'>
+                    <Form
+                        form={SearchForm}
+                        onFinish={e => {
+                            props.onSearchBarFinish && props.onSearchBarFinish(e);
+                        }}
+                    >
+                        <div className='form-item-list'>
+                            {getFormItem(props.columns)}
+                            <div className='submit-btn'>
+                                <Button style={{ backgroundColor: '#524bff' }} type='primary' htmlType='submit'>
+                                    查询
+                                </Button>
+                                <Button
+                                    onClick={() => {
+                                        SearchForm.resetFields();
+                                    }}
+                                >
+                                    重置
+                                </Button>
+                            </div>
+                        </div>
+
+                    </Form>
+                </div>}
+                {/* 表格信息 */}
+                <div className='active-info'>
+                    {props.onAdd && <Button style={{ backgroundColor: '#524bff' }} type='primary' onClick={props.onAdd}>
+                        新增数据
+                    </Button>}
+                    {props.showTools && <>
+                        <IconButton
+                            title={showModal ? '缩小' : '全屏'}
+                            icon={showModal ? <FullscreenExitOutlined /> : <FullscreenOutlined />}
+                            onClick={() => {
+                                setShowModal(!showModal);
+                            }}
+                        />
+                        <IconButton
+                            title={() => (
+                                <div>
+                                <Radio.Group
+                                    onChange={e => {
+                                    setSize(e.target.value);
+                                    }}
+                                    value={size}
+                                >
+                                    <Space direction='vertical'>
+                                    <Radio value={'default'}>大号</Radio>
+                                    <Radio value={'middle'}>中等</Radio>
+                                    <Radio value={'small'}>小号</Radio>
+                                    </Space>
+                                </Radio.Group>
+                                </div>
+                            )}
+                            placement='bottom'
+                            icon={<FontSizeOutlined />}
+                        />
+                    </>}
+                </div>
+                <Table
+                    size={size}
+                    bordered={props.bordered || true}
+                    columns={getColumns(props)}
+                    dataSource={props.dataSource.map((item, index) => { return { ...item, key: index } })}
+                    pagination={pagination}
+                    {...props.antProps}
+                />
+            </Spin>
         </ConfigProvider>
+    }
+
+    return <>
+        <Modal
+            title={false}
+            visible={showModal}
+            footer={null}
+            wrapClassName='super-modal-max'
+            closable={false}
+            destroyOnClose={true}
+            mask={false}
+            width='100vw'
+        >
+            {content()}
+        </Modal>
+        {!showModal &&
+            <>{content()}</>
+        }
     </>
 };
 

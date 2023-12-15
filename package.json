@@ -1,6 +1,6 @@
 {
   "name": "xhy-react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A react library developed with dumi",
   "main": "dist/esm/index.js",
   "private": false,
@@ -61,7 +61,7 @@
     "react-dom": ">=16.9.0"
   },
   "dependencies": {
-    "antd": "^4.20.2",
+    "antd": "^5.12.2",
     "@ant-design/pro-components":"^1.1.15",
     "exceljs": "^4.3.0",
     "moment": "^2.29.3",

@@ -18,10 +18,35 @@
     margin-bottom: 30px;
 }
 .table-operation-btn {
-    width: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    .operate-btn-item-update {
+        cursor: pointer;
+        color: #1677ff;
+    }
+    .operate-btn-item-delete {
+        cursor: pointer;
+        color: red;
+    }
+    .operate-btn-item-preview {
+        cursor: pointer;
+        color: #1677ff;
+    }
 }
+.super-modal-max>div {
+    max-width: 100vw;
+    height: 100vh;
+    top: 0;
+    padding-bottom: 0;
+  }
+  
+  .super-modal-max .ant-modal-content {
+    height: 100%;
+  }
 .active-info {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     margin-bottom: 20px;
 }

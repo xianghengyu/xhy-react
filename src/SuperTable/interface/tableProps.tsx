@@ -1,6 +1,18 @@
 /** @format */
 
 export interface tableProps {
+     /**
+     * @description       是否展示加载中
+     * @default           false
+     */
+    loading?: boolean;
+
+     /**
+     * @description       是否展示表格拓展工具
+     * @default           false
+     */
+      showTools?: boolean;
+
     /**
      * @description       是否展示表格边框
      * @default           true
@@ -38,7 +50,7 @@ export interface tableProps {
     onPageChange?: (current: number, pageSize: number) => void;
 
     /**
-     * @description       新增回调，返回当前行信息
+     * @description       新增回调
      * @default           无
      */
     onAdd?: (e:any) => void;
@@ -55,4 +67,16 @@ export interface tableProps {
      */
     onUpdate?: (e:any) => void;
 
+    /**
+     * @description       点击详情回调，返回当前行信息
+     * @default           无
+     */
+    onPreview?: (e:any) => void;
+
+    /**
+     * @description       antd Table组件原生属性（优先级最高）
+     * @default           无
+     */
+     antProps?: object;
+    
 }
