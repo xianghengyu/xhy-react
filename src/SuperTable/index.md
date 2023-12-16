@@ -1,6 +1,6 @@
 ---
 # 单独设置导航名称
-title: SuperTable表格
+title: SuperTable 表格
 nav: 组件API
 order: 1
 ---
@@ -21,14 +21,13 @@ SuperTable 拥有增删改查包含搜索栏功能于一身，另外提供全屏
 组件适用于任何单表页面使用，其自带的增删改查功能极大增加开发效率，同时功能模块为表格赋能
 
 :::info{title=注意}
-因每个项目设计风格不统一，目前此组件只针对通用项目设计风格，其余特殊设计风格可钉钉相恒玉定制；
+因每个项目设计风格不统一，目前此组件只针对通用项目设计风格，如有特殊设计风格可钉钉相恒玉定制；
 :::
-
 
 ### 简单使用
 
 ```jsx
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { SuperTable } from 'xhy-react';
 
 export default () => {
@@ -67,7 +66,7 @@ export default () => {
         {
           label: '选项二',
           value: 'value2',
-        }
+        },
       ],
       search: true,
       required: true,
@@ -87,52 +86,62 @@ export default () => {
     },
   ];
 
-  const searchInfo = (e) => { //顶部表单查询回调
+  const searchInfo = (e) => {
+    //顶部表单查询回调
     console.log(e);
-  }
+  };
 
-  const addInfo = (e) => { //新增回调
-    console.log('新增')
-  }
+  const addInfo = (e) => {
+    //新增回调
+    console.log('新增');
+  };
 
-  const deleteInfo = (e) => { //删除回调
-    console.log(e)
+  const deleteInfo = (e) => {
+    //删除回调
+    console.log(e);
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    },1000)
-  }
-  const updateInfo = (e) => { //编辑回调
+    }, 1000);
+  };
+  const updateInfo = (e) => {
+    //编辑回调
     console.log(e);
-  }
+  };
 
-  const previewInfo = (e) => { //详情回调
+  const previewInfo = (e) => {
+    //详情回调
     console.log(e);
-  }
+  };
 
-  const pageInfoChange = (current, pageSize) => { //底部 分页回调
+  const pageInfoChange = (current, pageSize) => {
+    //底部 分页回调
     console.log(current);
     console.log(pageSize);
-  }
-  
-  return <SuperTable 
-    loading={loading}
-    columns = {columns}
-    dataSource = {dataSource} 
-    onSearchBarFinish = {searchInfo} 
-    onPageChange = {pageInfoChange}
-    onAdd = {addInfo}
-    onDelete = {deleteInfo}
-    onUpdate = {updateInfo}
-    onPreview = {previewInfo}
-  />
-}
+  };
+
+  return (
+    <SuperTable
+      loading={loading}
+      columns={columns}
+      dataSource={dataSource}
+      onSearchBarFinish={searchInfo}
+      onPageChange={pageInfoChange}
+      onAdd={addInfo}
+      onDelete={deleteInfo}
+      onUpdate={updateInfo}
+      onPreview={previewInfo}
+    />
+  );
+};
 ```
 
 ### 开启拓展工具
-设置showTools属性为true即可开启表格拓展工具
+
+设置 showTools 属性为 true 即可开启表格拓展工具
+
 ```jsx
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { SuperTable } from 'xhy-react';
 
 export default () => {
@@ -155,7 +164,7 @@ export default () => {
       dataType: 'input',
       search: true,
       required: false,
-    }
+    },
   ];
   //表格数据
   const dataSource = [
@@ -168,18 +177,19 @@ export default () => {
       age: 42,
     },
   ];
-  
-  return <SuperTable 
-    showTools={true}
-    columns = {columns}
-    dataSource = {dataSource} 
-  />
-}
+
+  return (
+    <SuperTable showTools={true} columns={columns} dataSource={dataSource} />
+  );
+};
 ```
-### antProps属性覆盖
-设置antProps属性可覆盖此组件所有同名的属性，原始属性优先级最高,可以看到虽然我设置了bordered为true，但是antProps中的属性会覆盖它；
+
+### antProps 属性覆盖
+
+设置 antProps 属性可覆盖此组件所有同名的属性，原始属性优先级最高,可以看到虽然我设置了 bordered 为 true，但是 antProps 中的属性会覆盖它；
+
 ```jsx
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { SuperTable } from 'xhy-react';
 
 export default () => {
@@ -202,7 +212,7 @@ export default () => {
       dataType: 'input',
       search: true,
       required: false,
-    }
+    },
   ];
   //表格数据
   const dataSource = [
@@ -215,23 +225,26 @@ export default () => {
       age: 42,
     },
   ];
-  
-  return <SuperTable 
-    bordered={true}
-    antProps={{'bordered':false}}
-    columns = {columns}
-    dataSource = {dataSource} 
-  />
-}
+
+  return (
+    <SuperTable
+      bordered={true}
+      antProps={{ bordered: false }}
+      columns={columns}
+      dataSource={dataSource}
+    />
+  );
+};
 ```
 
 ## API
 
 ### 表格
 
-SuperTable属性
+SuperTable 属性
 <API id="SuperTable"></API>
 
 ### 列
-columns属性
+
+columns 属性
 <API id="ColumnsProps"></API>

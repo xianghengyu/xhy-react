@@ -2,7 +2,7 @@
 # 单独设置导航名称
 title: UploadFile
 nav: 组件API
-order: 3
+order: 9
 ---
 
 <!-- @format -->
@@ -10,8 +10,6 @@ order: 3
 ## UploadFile
 
 > 基于 antd-upload 的上传文件拓展组件，支持大文件断点续传（开发中。。。。。）;
-
-
 
 ## Demo
 
@@ -29,9 +27,9 @@ export default () => {
     <>
       <UploadFile
         onChange={fileChange}
-        accept=''
+        accept=""
         fileList={fileList}
-        listType='picture'
+        listType="picture"
         maxCount={2}
         multiple={true}
         disabled={false}
@@ -56,7 +54,7 @@ export default () => {
       <UploadFile
         onChange={fileChange}
         fileList={fileList}
-        listType='text'
+        listType="text"
         maxCount={2}
         multiple={true}
         disabled={false}
@@ -80,9 +78,9 @@ export default () => {
     <>
       <UploadFile
         onChange={fileChange}
-        accept='.png'
+        accept=".png"
         fileList={fileList}
-        listType='picture-card'
+        listType="picture-card"
         maxCount={2}
         multiple={true}
         disabled={false}
@@ -105,10 +103,10 @@ export default () => {
   return (
     <>
       <UploadFile
-        type='dragger'
-        listType='picture'
+        type="dragger"
+        listType="picture"
         onChange={fileChange}
-        accept='.png'
+        accept=".png"
         fileList={fileList}
         maxCount={2}
         multiple={true}
@@ -118,4 +116,5 @@ export default () => {
   );
 };
 ```
+
 <API ></API>
