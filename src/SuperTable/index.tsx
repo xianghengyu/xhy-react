@@ -22,26 +22,26 @@ import {
 const formTypeItem = (data: any) => {
     switch (data.dataType) {
         case 'input':
-            return <Input style={{ width: data.width || 180 }} placeholder={`请输入${data.title}`} />;
+            return <Input allowClear style={{ width: data.width || 300 }} placeholder={`请输入${data.title}`} />;
         case 'boolean':
             return <Switch />;
         case 'number':
             return <InputNumber />;
         case 'date':
-            return <DatePicker style={{ width: data.width || 180 }} placeholder={`请选择${data.title}`} />;
+            return <DatePicker allowClear style={{ width: data.width || 260 }} placeholder={`请选择${data.title}`} />;
         case 'datetime':
-            return <DatePicker style={{ width: data.width || 180 }} placeholder={`请选择${data.title}`} showTime />;
+            return <DatePicker allowClear style={{ width: data.width || 300 }} placeholder={`请选择${data.title}`} showTime />;
         case 'time':
-            return <TimePicker style={{ width: data.width || 80 }} showNow />;
+            return <TimePicker allowClear style={{ width: data.width || 260 }} showNow />;
         case 'select':
-            return <Select style={{ width: data.width || 180 }} placeholder={`请选择${data.title}`} allowClear options={data.dataSource || []}></Select>;
+            return <Select style={{ width: data.width || 260 }} placeholder={`请选择${data.title}`} allowClear options={data.dataSource || []}></Select>;
         case 'cascader':
-            return <Cascader style={{ width: data.width || 180 }} options={data.dataSource || []} placeholder={`请选择${data.title}`} allowClear />;
+            return <Cascader style={{ width: data.width || 260 }} options={data.dataSource || []} placeholder={`请选择${data.title}`} allowClear />;
         case 'tree':
             return (
                 <TreeSelect
                     showSearch
-                    dropdownStyle={{ width: data.width || 180, maxHeight: 400, overflow: 'auto' }}
+                    dropdownStyle={{ width: data.width || 260, maxHeight: 400, overflow: 'auto' }}
                     placeholder={`请选择${data.title}`}
                     allowClear
                     treeDefaultExpandAll
@@ -49,7 +49,7 @@ const formTypeItem = (data: any) => {
                 />
             );
         default:
-            return <Input style={{ width: data.width || 180 }} placeholder={`请输入${data.title}`} />;
+            return <Input allowClear style={{ width: data.width || 300 }} placeholder={`请输入${data.title}`} />;
     }
 }
 
@@ -135,7 +135,7 @@ const getColumns = (props: any) => {
 const SuperTable = (props: tableProps) => {
     const [SearchForm]: any = Form.useForm();
     const [showModal, setShowModal] = useState(false);
-    const [size, setSize] = useState<any>('default');
+    const [size, setSize] = useState<any>('middle');
 
     //分页回调
     const pagination = {
@@ -198,7 +198,7 @@ const SuperTable = (props: tableProps) => {
                                     value={size}
                                 >
                                     <Space direction='vertical'>
-                                    <Radio value={'default'}>大号</Radio>
+                                    <Radio value={'large'}>大号</Radio>
                                     <Radio value={'middle'}>中等</Radio>
                                     <Radio value={'small'}>小号</Radio>
                                     </Space>

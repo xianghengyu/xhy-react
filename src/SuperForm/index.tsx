@@ -89,7 +89,7 @@ const SuperForm = (props: SuperFormProps) => {
             }}
             {...props.antProps}
         >
-            {props.type == 'line' ? <div className='form-item-list'>
+            {(props.type == 'line' || !props.type) ? <div className='form-item-list'>
                 {getFormItem(props.columns)}
                 <div className='submit-btn'>
                     <Button style={{ backgroundColor: '#524bff' }} type='primary' htmlType='submit'>
