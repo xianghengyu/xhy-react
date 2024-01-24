@@ -21,7 +21,7 @@ export default () => {
   const ref2 = useRef(null);
   const ref3 = useRef(null);
 
-  const [open, setOpen] = useState < boolean > false;
+  const [open, setOpen] = useState(false);
   const steps = [
     {
       title: '步骤一',
