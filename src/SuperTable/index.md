@@ -75,11 +75,13 @@ export default () => {
   //表格数据
   const dataSource = [
     {
+      id: '1',
       name: '胡彦斌',
       age: 32,
       address: '西湖区湖底公园1号',
     },
     {
+      id: '2',
       name: '胡彦祖',
       age: 42,
       address: '西湖区湖底公园1号',
@@ -219,10 +221,12 @@ export default () => {
   //表格数据
   const dataSource = [
     {
+      id: '1',
       name: '胡彦斌',
       age: 32,
     },
     {
+      id: '2',
       name: '胡彦祖',
       age: 42,
     },
@@ -270,16 +274,19 @@ export default () => {
   //表格数据
   const dataSource = [
     {
+      id: '1',
       name: '胡彦斌',
       age: 32,
     },
     {
+      id: '2',
       name: '胡彦祖',
       age: 42,
     },
   ];
-  const updateInfo = (info) => {
+  const updateInfo = (info, record) => {
     console.log(info);
+    console.log(record);
   }
   return (
     <SuperTable openEditRow={true} onUpdate={updateInfo} columns={columns} dataSource={dataSource} />

@@ -77,7 +77,7 @@ export interface tableProps {
      * @description       修改回调，返回当前行信息
      * @default           无
      */
-    onUpdate?: (e:any) => void;
+    onUpdate?: (e:any, record:any) => void;
 
     /**
      * @description       点击详情回调，返回当前行信息

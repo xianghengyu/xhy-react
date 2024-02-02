@@ -107,13 +107,13 @@ const SuperTable = (props: tableProps) => {
         setEditingKey('');
     };
     //保存编辑单元行回调
-    const saveEditInfo = async (key:any) => {
+    const saveEditInfo = async (record:any) => {
         try {
             const row = await tableForm.validateFields();
-            props.onUpdate && props.onUpdate(row);
+            props.onUpdate && props.onUpdate(row, record);
             setEditingKey('');
         } catch (error) {
-            
+            console.log(error);
         }
     }
     /**
@@ -137,7 +137,7 @@ const SuperTable = (props: tableProps) => {
                         editable? <div className='table-operation-btn'>
                             <div
                                 className='operate-btn-item-update'
-                                onClick={()=>{saveEditInfo(record.key)}}
+                                onClick={()=>{saveEditInfo(record)}}
                             >
                                 保存
                             </div>
@@ -161,7 +161,7 @@ const SuperTable = (props: tableProps) => {
                                     if(props.openEditRow) {
                                         editClick(row);
                                     } else {
-                                        props.onUpdate(row)
+                                        props.onUpdate(row, record)
                                     }
                                 }}
                             >
@@ -320,11 +320,11 @@ const SuperTable = (props: tableProps) => {
                 </div>
                 <Form form={tableForm} component={false}>
                     <Table
-                        components={{
+                        components={props.dataSource.length> 0?{
                             body: {
                                 cell: EditableCell,
                             },
-                        }}
+                        }:{}}
                         size={size}
                         rowSelection={props.openSelect ? rowSelection:undefined}
                         bordered={props.bordered || true}

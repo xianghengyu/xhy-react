@@ -29,4 +29,4 @@ GitHub 地址：https://github.com/xianghengyu/xhy-react.git
 | 0.0.1  | 2023-12-14 | 初版     | "antd": "^4.20.2"<br> "@ant-design/pro-components":"^1.1.15" <br> "exceljs": "^4.3.0" <br> "moment": "^2.29.3"<br> "react-sortable-hoc": "^2.0.0" |
 | 0.0.2  | 2023-12-15 | 更新     | "antd": "^5.12.2"<br> "@ant-design/pro-components":"^1.1.15" <br> "exceljs": "^4.3.0" <br> "moment": "^2.29.3"<br> "react-sortable-hoc": "^2.0.0" |
 | 0.0.3  | 2023-12-16 | 更新     | "antd": "^5.12.2"<br> "@ant-design/pro-components":"^1.1.15" <br> "exceljs": "^4.3.0" <br> "moment": "^2.29.3"<br> "react-sortable-hoc": "^2.0.0" |
-| 0.0.6  | 2024-2-2 | SuperTable新增可编辑行、可选中功能     | "antd": "^5.12.2"<br> "@ant-design/pro-components":"^1.1.15" <br> "exceljs": "^4.3.0" <br> "moment": "^2.29.3"<br> "react-sortable-hoc": "^2.0.0" |
+| 0.0.7  | 2024-2-2 | SuperTable新增可编辑行、可选中功能、修复空数据展示bug     | "antd": "^5.12.2"<br> "@ant-design/pro-components":"^1.1.15" <br> "exceljs": "^4.3.0" <br> "moment": "^2.29.3"<br> "react-sortable-hoc": "^2.0.0" |
