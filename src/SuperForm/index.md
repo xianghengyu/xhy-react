@@ -62,6 +62,7 @@ export default () => {
   return (
     <SuperForm
       antProps={{}}
+      type="vertical"
       columns={columns}
       onSearchBarFinish={searchInfo}
       onReset={resetInfo}
@@ -103,7 +104,6 @@ export default () => {
   };
   return (
     <SuperForm
-      type="line"
       columns={columns}
       onSearchBarFinish={searchInfo}
     ></SuperForm>

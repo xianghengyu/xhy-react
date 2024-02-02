@@ -184,6 +184,109 @@ export default () => {
 };
 ```
 
+
+### 开启表格选择
+
+设置 openSelect 属性为 true 即可开启表格选中操作
+
+```jsx
+import React, { useState } from 'react';
+import { SuperTable } from 'xhy-react';
+
+export default () => {
+  //表头
+  const columns = [
+    {
+      title: '姓名',
+      align: 'center',
+      dataIndex: 'name',
+      key: 'name',
+      dataType: 'input',
+      search: true,
+      required: true,
+      editable:true
+    },
+    {
+      title: '年龄',
+      align: 'center',
+      dataIndex: 'age',
+      key: 'age',
+      dataType: 'input',
+      search: true,
+      required: false,
+    },
+  ];
+  //表格数据
+  const dataSource = [
+    {
+      name: '胡彦斌',
+      age: 32,
+    },
+    {
+      name: '胡彦祖',
+      age: 42,
+    },
+  ];
+  const onSelectChange = (e) => {
+    console.log(e);
+  }
+  return (
+    <SuperTable openSelect={true} showTools={true} columns={columns} dataSource={dataSource} onSelectChange={onSelectChange}/>
+  );
+};
+```
+
+
+### 开启可编辑表格
+
+设置 openEditRow 属性为 true 即可开启表格可编辑行操作，onUpdate事件将会在保存时触发，更新数据请自行调更新接口后重新赋值表格数据；
+
+```jsx
+import React, { useState } from 'react';
+import { SuperTable } from 'xhy-react';
+
+export default () => {
+  //表头
+  const columns = [
+    {
+      title: '姓名',
+      align: 'center',
+      dataIndex: 'name',
+      key: 'name',
+      dataType: 'input',
+      search: true,
+      required: true,
+    },
+    {
+      title: '年龄',
+      align: 'center',
+      dataIndex: 'age',
+      key: 'age',
+      dataType: 'input',
+      search: true,
+      required: false,
+    },
+  ];
+  //表格数据
+  const dataSource = [
+    {
+      name: '胡彦斌',
+      age: 32,
+    },
+    {
+      name: '胡彦祖',
+      age: 42,
+    },
+  ];
+  const updateInfo = (info) => {
+    console.log(info);
+  }
+  return (
+    <SuperTable openEditRow={true} onUpdate={updateInfo} columns={columns} dataSource={dataSource} />
+  );
+};
+```
+
 ### antProps 属性覆盖
 
 设置 antProps 属性可覆盖此组件所有同名的属性，原始属性优先级最高,可以看到虽然我设置了 bordered 为 true，但是 antProps 中的属性会覆盖它；

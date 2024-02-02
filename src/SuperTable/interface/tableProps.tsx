@@ -38,6 +38,18 @@ export interface tableProps {
     dataSource: Array<any>;
 
     /**
+     * @description       是否开启表格select
+     * @default           false
+     */
+    openSelect?: boolean;
+
+    /**
+     * @description       是否开启表格内行编辑功能
+     * @default           false
+     */
+    openEditRow?: boolean;
+
+    /**
      * @description       搜索回调，返回搜索数据
      * @default           无
      */
@@ -72,6 +84,12 @@ export interface tableProps {
      * @default           无
      */
     onPreview?: (e:any) => void;
+
+    /**
+     * @description       表格Select事件回调
+     * @default           无
+     */
+    onSelectChange?: (e:any) => void;
 
     /**
      * @description       antd Table组件原生属性（优先级最高）
