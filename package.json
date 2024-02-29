@@ -1,6 +1,6 @@
 {
   "name": "xhy-react",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "private": false,
   "description": "A react library developed with dumi",
   "repository": {
@@ -52,7 +52,10 @@
   },
   "dependencies": {
     "@ant-design/pro-components": "^1.1.15",
+    "@wangeditor/editor": "^5.1.23",
+    "@wangeditor/editor-for-react": "^1.0.6",
     "antd": "^5.12.2",
+    "echarts": "^5.5.0",
     "exceljs": "^4.3.0",
     "moment": "^2.29.3",
     "react-sortable-hoc": "^2.0.0"

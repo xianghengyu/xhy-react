@@ -2,7 +2,7 @@
 # 单独设置导航名称
 title: 拓展
 nav: 组件API
-order: 10
+order: 50
 ---
 
 # 拓展

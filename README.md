@@ -5,6 +5,8 @@
 
 A react library developed with dumi
 
+文档地址 (https://xianghengyu.github.io/xhy-react)
+
 ## Usage
 
 TODO
