@@ -39,7 +39,8 @@ const RichEditor = (props: RichEditorProps )=> {
     const toolbarConfig: Partial<IToolbarConfig> = {
         excludeKeys:[
             'uploadImage',
-            'uploadVideo'
+            'uploadVideo',
+            'fullScreen'
         ]
      } 
 

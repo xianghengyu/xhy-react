@@ -3,9 +3,9 @@
 [![NPM version](https://img.shields.io/npm/v/xhy-react.svg?style=flat)](https://npmjs.org/package/xhy-react)
 [![NPM downloads](http://img.shields.io/npm/dm/xhy-react.svg?style=flat)](https://npmjs.org/package/xhy-react)
 
-A react library developed with dumi
+集成常见的React组件，简化开发流程，让开发更简单
 
-文档地址 (https://xianghengyu.github.io/xhy-react)
+文档地址 (https://xianghengyu.github.io/xhy-react) 帮忙点个star吧！
 
 ## Usage
 

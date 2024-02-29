@@ -6,7 +6,10 @@ order: 9
 ---
 
 # Echarts 图表
-改组件为基于 Echarts 的图表组件，简化了 Echarts 的配置项，提供了更简单的配置方式和调用方法，只需要关注options、width、height即可,参数变动会自动更新图表。
+改组件为基于 Echarts 的图表组件，简化了 Echarts 的配置项，提供了更简单的配置方式和调用方法。
+
+## 设计特色
+只需要关注options、width、height即可,参数变动会自动更新图表。
 
 ## 简单使用
 可以看到Echarts组件的宽高默认是跟随父容器的宽高，也可以通过设置width和height来设置宽高。

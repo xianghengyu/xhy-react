@@ -9,7 +9,7 @@ order: 10
 该富文本插件是基于wangeditor编辑器做的封装，简化了调用流程，用户只需要关注数据即可。
 
 ## 简单使用
-
+可以看到RichEdit组件的宽高默认是跟随父容器的宽高，也可以通过设置width和height来设置宽高。
 ```jsx
 import React, { useState } from 'react';
 import { RichEdit } from 'xhy-react';
