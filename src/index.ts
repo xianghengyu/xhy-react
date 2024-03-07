@@ -6,3 +6,4 @@ export { default as SuperTable } from './SuperTable';
 export { default as ColumnsProps } from './SuperTable/components/ColumnsProps';
 export { default as Echarts } from './Echarts';
 export { default as RichEdit } from './RichEdit';
+export { default as SCPoint } from './SCPoint';
