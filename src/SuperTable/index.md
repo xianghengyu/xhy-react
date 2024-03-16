@@ -53,6 +53,14 @@ export default () => {
       required: false,
     },
     {
+      title: '出生日期',
+      align: 'center',
+      dataIndex: 'birthDay',
+      key: 'birthDay',
+      dataType: 'date',
+      search: true,
+    },
+    {
       title: '住址',
       align: 'center',
       dataIndex: 'address',
@@ -79,13 +87,15 @@ export default () => {
       name: '胡彦斌',
       age: 32,
       address: '西湖区湖底公园1号',
+      birthDay: '1989-09-09',
     },
     {
       id: '2',
       name: '胡彦祖',
       age: 42,
       address: '西湖区湖底公园1号',
-    },
+      birthDay: '1989-09-09',
+    }
   ];
 
   const searchInfo = (e) => {
@@ -126,6 +136,7 @@ export default () => {
     <SuperTable
       loading={loading}
       columns={columns}
+      totalNum={100}
       dataSource={dataSource}
       onSearchBarFinish={searchInfo}
       onPageChange={pageInfoChange}

@@ -1,6 +1,6 @@
 {
   "name": "xhy-react",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "private": false,
   "description": "集成常见的React组件，简化开发流程，让开发更简单",
   "repository": {

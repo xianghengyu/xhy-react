@@ -1,5 +1,7 @@
-import React from 'react';
-import { Input, Form, Button, Switch, InputNumber, DatePicker, TimePicker, Select, Cascader, TreeSelect } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { ConfigProvider, Input, Form, Button, Switch, InputNumber, DatePicker, TimePicker, Select, Cascader, TreeSelect } from 'antd';
+const { RangePicker } = DatePicker;
+import zhCN from 'antd/lib/locale/zh_CN';
 import './index.less';
 interface SuperFormProps {
     /**
@@ -9,7 +11,7 @@ interface SuperFormProps {
     type?: 'line' | 'vertical';
 
     /**
-    * @description       表格列的配置描述，具体项见案例
+    * @description       SuperTable columns列的配置描述，具体项见案例
     * @default           []
     */
     columns: Array<any>;
@@ -31,9 +33,22 @@ interface SuperFormProps {
      * @default           无
      */
       antProps?: object;
+
+    /**
+     * @description         表单默认值
+     * @default           无
+     */
+      defaultVlalue?: object;
+
 }
 const SuperForm = (props: SuperFormProps) => {
     const [SearchForm]: any = Form.useForm();
+    useEffect(() => {
+        if(props.defaultVlalue) {
+            SearchForm.setFieldsValue(props.defaultVlalue);
+        }
+
+    },[props.defaultVlalue])
     const formTypeItem = (data: any) => {
         switch (data.dataType) {
             case 'input':
@@ -42,6 +57,10 @@ const SuperForm = (props: SuperFormProps) => {
                 return <Switch />;
             case 'number':
                 return <InputNumber />;
+            case 'rangPicker':
+                    return <RangePicker allowClear style={{ width: data.width || 300 }} />;
+            case 'rangTimePicker':
+                    return <RangePicker allowClear style={{ width: data.width || 300 }} showTime/>;
             case 'date':
                 return <DatePicker style={{ width: data.width || 260 }} placeholder={`请选择${data.title}`} />;
             case 'datetime':
@@ -82,6 +101,7 @@ const SuperForm = (props: SuperFormProps) => {
         )
     }
     return <>
+    <ConfigProvider locale={zhCN}>
         <Form
             form={SearchForm}
             onFinish={e => {
@@ -124,6 +144,7 @@ const SuperForm = (props: SuperFormProps) => {
             }
 
         </Form>
+        </ConfigProvider>
     </>
 };
 

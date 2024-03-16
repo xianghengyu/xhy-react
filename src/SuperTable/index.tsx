@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ConfigProvider, Modal, Radio, Space, Spin, Popconfirm, Table, Form, Button, Switch, InputNumber, DatePicker, TimePicker, Select, Cascader, TreeSelect } from 'antd';
+const { RangePicker } = DatePicker;
 import './index.less'
 import zhCN from 'antd/lib/locale/zh_CN';
 import Input from 'antd/lib/input/Input';
@@ -27,6 +28,10 @@ const formTypeItem = (data: any) => {
             return <Switch />;
         case 'number':
             return <InputNumber />;
+        case 'rangPicker':
+            return <RangePicker allowClear style={{ width: data.width || 300 }} />;
+        case 'rangTimePicker':
+                return <RangePicker allowClear style={{ width: data.width || 300 }} showTime/>;
         case 'date':
             return <DatePicker allowClear style={{ width: data.width || 260 }} placeholder={`请选择${data.title}`} />;
         case 'datetime':
@@ -92,6 +97,7 @@ const SuperTable = (props: tableProps) => {
     //分页回调
     const pagination = {
         showSizeChanger: true,
+        total: props.totalNum || 0,
         onChange: (page: any, pageSize: any) => {
             props.onPageChange && props.onPageChange(page, pageSize)
         }
@@ -265,6 +271,7 @@ const SuperTable = (props: tableProps) => {
                                 <Button
                                     onClick={() => {
                                         SearchForm.resetFields();
+                                        SearchForm.submit();
                                     }}
                                 >
                                     重置

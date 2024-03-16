@@ -25,10 +25,12 @@ SuperForm 数据处理完全交给组件本身，开发者只需要配置字段�
 :::
 
 ### 简单使用（纵向）
+如果表单有默认值可传入 defaultVlalue 属性；
 
 ```jsx
 import React, { useState } from 'react';
 import { SuperForm } from 'xhy-react';
+import moment from 'moment';
 
 export default () => {
   //表头
@@ -52,6 +54,13 @@ export default () => {
       required: false,
       antItemProps: {},
     },
+    {
+      title: '时间段',
+      dataIndex: 'dateRRang',
+      dataType: 'rangPicker',
+      required: false,
+      antItemProps: {},
+    },
   ];
   const searchInfo = (e) => {
     console.log(e);
@@ -62,6 +71,7 @@ export default () => {
   return (
     <SuperForm
       antProps={{}}
+      defaultVlalue={{name:'相恒玉',age:18,date:moment('2020/01/03')}}
       type="vertical"
       columns={columns}
       onSearchBarFinish={searchInfo}

@@ -32,6 +32,12 @@ export interface tableProps {
     columns: Array<any>;
 
     /**
+    * @description       表格查询出来的总数量（用作分页切换）
+    * @default           0
+    */
+    totalNum?: number;
+
+    /**
     * @description       数据数组
     * @default           []
     */

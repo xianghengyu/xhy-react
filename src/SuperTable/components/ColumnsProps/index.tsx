@@ -39,7 +39,7 @@ interface columnsProps {
      * @description       单元格类型（决定表单类型）
      * @default           input
      */
-     dataType?: 'date'|'datetime'|'time'|'select'|'cascader'|'tree'|'input'|'boolean'|'number';
+     dataType?: 'date'|'datetime'|'time'|'rangPicker'|'rangTimePicker'|'select'|'cascader'|'tree'|'input'|'boolean'|'number';
 
      /**
      * @description       如果配置dataType为select、tree则必填
